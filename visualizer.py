@@ -10,7 +10,7 @@ from moviepy import AudioFileClip
 # Human hearing is roughly 20 Hz to 20,000 Hz. 
 # Viola ranges typically sit between 130 Hz (C3) and a few thousand Hz for overtones.
 MIN_FREQ = 0
-MAX_FREQ = 7500
+MAX_FREQ = 3000
 
 # Settings for matplotlib
 BACKGROUND_COLOR = '#0f0f0f'
@@ -100,7 +100,6 @@ def create_visualization(frequencies, magnitudes, output_path):
     
     # Customize the axes
     ax.set_xlim(MIN_FREQ, MAX_FREQ)
-    ax.set_title('Frequency Spectrum', color='white', fontsize=16, pad=15)
     ax.set_xlabel('Frequency (Hz)', color='white', fontsize=12)
     ax.set_ylabel('Magnitude', color='white', fontsize=12)
     
@@ -111,7 +110,16 @@ def create_visualization(frequencies, magnitudes, output_path):
         spine.set_alpha(0.3)
         
     # Optional: You can hide the axes:
+    # To hide everything (both axes, ticks, and borders):
     # ax.axis('off')
+    
+    # just the x-axis:
+    # ax.xaxis.set_visible(False)
+    
+    # just y-axis:
+    # ax.yaxis.set_visible(False)
+    
+    ax.axis('off') # Currently hiding everything, you can change this!
     
     # Save the plot
     plt.tight_layout()
